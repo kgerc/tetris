@@ -79,7 +79,7 @@ void Plansza::Czyszczenie_klockow(int pozycjaX, int pozycjaY, int rodzaj_klocka,
 		{
 			if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) == 1)
 			{
-				plansza[i][j] = 0;
+				plansza[i][j] = 9;
 			}
 		}
 	}
@@ -121,20 +121,13 @@ void Plansza::Czy_usuwac_linie()
 		}
 	}
 }
-bool Plansza::czy_blok_jest_wolny(int pX,int pY)
-{
-	if (plansza[pX][pY] == 9)
-		return true;
-	else
-		return false;
-}
 bool Plansza::czy_ruch_jest_mozliwy(int pX, int pY, int rodzaj_klocka, int rotacja)
 {
 	for (int i1 = pX, i2 = 0; i1 < pX + MACIERZ_KLOCKA; i1++, i2++)
 	{
 		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)
 		{
-			if (i1 <= 0 || i1 >= SZEROKOSC_PLANSZY || j1 < WYSOKOSC_PLANSZY)
+			if (i1 < 0 || i1 > SZEROKOSC_PLANSZY-1|| j1 > WYSOKOSC_PLANSZY-1)
 			{
 				if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0)
 				{
@@ -143,10 +136,8 @@ bool Plansza::czy_ruch_jest_mozliwy(int pX, int pY, int rodzaj_klocka, int rotac
 			}
 			if (j1 >= 0)
 			{
-				if ((TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0) && (!czy_blok_jest_wolny(i1, j1)))
-				{
-					return false;
-				}	
+				if ((TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0) && (plansza[i1][j1]!=9))
+					return false;	
 			}
 		}
 	}
