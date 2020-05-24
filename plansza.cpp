@@ -127,7 +127,7 @@ bool Plansza::czy_ruch_jest_mozliwy(int pX, int pY, int rodzaj_klocka, int rotac
 	{
 		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)
 		{
-			if (i1 < 0 || i1 > SZEROKOSC_PLANSZY-1|| j1 > WYSOKOSC_PLANSZY-1)
+			if (i1 < 0 || i1 > WYSOKOSC_PLANSZY-1|| j1 > SZEROKOSC_PLANSZY-1)
 			{
 				if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0)
 				{

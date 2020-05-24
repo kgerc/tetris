@@ -19,22 +19,44 @@ int main()
 		case 1:
 		{
 				p1.Czyszczenie_klockow(x1, y1, 6, 2);
-				p1.Generator_Klockow(x1 + 1, y1, 6, 2);
-				x1++;
+				if (p1.czy_ruch_jest_mozliwy(x1 + 1, y1, 6, 2))
+				{
+					p1.Generator_Klockow(x1 + 1, y1, 6, 2);
+					x1++;
+				}
+				else
+				{
+					p1.Generator_Klockow(x1, y1, 6, 2);
+				}
 		}
 		break;
 		case 2:
 		{
 			p1.Czyszczenie_klockow(x1,y1, 6, 2);
-			p1.Generator_Klockow(x1, y1+1, 6, 2);
-			y1++;
+			if (p1.czy_ruch_jest_mozliwy(x1, y1+1, 6, 2))
+			{
+				p1.Generator_Klockow(x1, y1 + 1, 6, 2);
+				y1++;
+			}
+			else
+			{
+				p1.Generator_Klockow(x1, y1, 6, 2);
+			}
 		}
 		break;
+
 		case 3:
 		{
 			p1.Czyszczenie_klockow(x1, y1, 6, 2);
-			p1.Generator_Klockow(x1, y1-1, 6, 2);
-			y1--;
+			if (p1.czy_ruch_jest_mozliwy(x1, y1 - 1, 6, 2))
+			{
+				p1.Generator_Klockow(x1, y1 - 1, 6, 2);
+				y1--;
+			}
+			else
+			{
+				p1.Generator_Klockow(x1, y1, 6, 2);
+			}
 		}
 		break;
 		}
