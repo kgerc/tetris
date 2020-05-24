@@ -1,0 +1,10 @@
+InitBoard();
+While(IsGameOver)
+{
+DrawPiece();
+while(Collision)
+{
+movement(collision on sides();rotation(););
+}
+DeletePossibleLines(move the row down one line);
+}
