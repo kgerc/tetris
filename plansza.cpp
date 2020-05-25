@@ -143,3 +143,43 @@ bool Plansza::czy_ruch_jest_mozliwy(int pX, int pY, int rodzaj_klocka, int rotac
 	}
 	return true;
 }
+int::Plansza::GetRand()
+{
+	srand(time(NULL));
+	return rand() % 7;
+}
+int::Plansza::RotujKlocka1(int rotacja)
+{
+	if (rotacja < 3)
+	{
+		rotacja++;
+	}
+	else
+	{
+		rotacja = 0;
+	}
+	return rotacja;
+}
+int Plansza::RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja)
+{
+	if (pY <= 0)
+	{
+		pY = pY + 2;
+	}
+	if (pY >= 8)
+	{
+		pY = pY - 2;
+	}
+	for (int i1 = pX, i2 = 0; i1 < pX + MACIERZ_KLOCKA; i1++, i2++)
+	{
+		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)
+		{
+
+			if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0)
+			{
+				plansza[i1][j1] = 1;
+			}
+		}
+	}
+	return pY;
+}
