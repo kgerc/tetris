@@ -162,14 +162,43 @@ int::Plansza::RotujKlocka1(int rotacja)
 }
 int Plansza::RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja)
 {
-	if (pY <= 0)
+	if (rodzaj_klocka == 1)
 	{
-		pY = pY + 2;
+		if (pY == -1 && rotacja == 2)
+		{
+			pY = pY + 2;
+		}
+		if (pY == 0 && rotacja == 2)
+		{
+			pY = pY + 1;
+		}
+		if (pY == -1 && rotacja == 0)
+		{
+			pY = pY + 1;
+		}
+		if (pY == 8 && rotacja == 0)
+		{
+			pY = pY - 2;
+		}
+		if (pY == 7 && rotacja == 0)
+		{
+			pY = pY - 1;
+		}
+		if (pY == 8 && rotacja == 2)
+		{
+			pY = pY - 1;
+		}
 	}
-	if (pY >= 8)
-	{
-		pY = pY - 2;
-	}
+	else
+	if (pY < 0)
+		{
+			pY = pY + 1;
+		}
+	if (pY > 7)
+		{
+			pY = pY - 1;
+		}
+	
 	for (int i1 = pX, i2 = 0; i1 < pX + MACIERZ_KLOCKA; i1++, i2++)
 	{
 		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)

@@ -6,11 +6,11 @@ using namespace std;
 int main()
 {
 	int x;
-	int x1=-1, y1=1,r_klocka=1,rotacja=1;
+	int x1=0, y1=1,r_klocka=1,rotacja=1;
 	Plansza p1(20);
 	p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 	p1.Generator_Planszy();
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 300; i++)
 	{
 		cout << endl<< "kierunek:";
 		cin >> x;
@@ -71,7 +71,12 @@ int main()
 			y1 = p1.RotujKlocka2(x1, y1, r_klocka, rotacja);
 		}
 		break;
+		default:
+		{
+			exit(0);
 		}
+		}
+		
 		system("cls");
 		p1.Generator_Planszy();
 	}
