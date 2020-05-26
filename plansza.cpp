@@ -95,9 +95,9 @@ bool Plansza::KoniecGry()
 }
 void Plansza::Kasacja_linii(int pozycjaY)
 {
-	for (int i = pozycjaY; i < 0; i--)
+	for (int i = pozycjaY; i > 0; i--)
 	{
-		for (int j = 0; j < SZEROKOSC_PLANSZY; j++)
+		for (int j = 1; j <= SZEROKOSC_PLANSZY-2; j++)
 		{
 			plansza[i][j] = plansza[i - 1][j];
 		}
@@ -108,7 +108,7 @@ void Plansza::Czy_usuwac_linie()
 	for (int i = 0; i < WYSOKOSC_PLANSZY; i++)
 	{
 		int licznik = 0;
-		for(int j = 0; j < SZEROKOSC_PLANSZY; j++)
+		for(int j = 1; j <= SZEROKOSC_PLANSZY-2; j++)
 		{
 			if (plansza[i][j] == 1)
 			{

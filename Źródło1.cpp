@@ -27,6 +27,7 @@ int main()
 			else
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+				p1.Czy_usuwac_linie();
 				x1 = 1;
 				y1 = 1;
 				r_klocka = p1.GetRand();
