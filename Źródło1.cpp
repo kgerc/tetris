@@ -5,11 +5,13 @@ using namespace std;
 
 int main()
 {
+	//Inicjalizacja planszy i pierwszego klocka
 	int x;
-	int x1=-1, y1=3,r_klocka=6,rotacja=3;
+	int x1=-2, y1=3,r_klocka=1,rotacja=0;
 	Plansza p1(20);
 	p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 	p1.Generator_Planszy();
+	//Giera tutaj
 	for(;;)
 	{
 		cout << endl<< "kierunek:";
@@ -30,6 +32,7 @@ int main()
 				p1.Czy_usuwac_linie();
 				if (p1.KoniecGry() == true)
 				{
+					cout << "GAME OVER";
 					exit(0);
 				}
 				r_klocka = p1.GetRand();
@@ -51,10 +54,6 @@ int main()
 			else
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-				if (p1.KoniecGry() == true)
-				{
-					exit(0);
-				}
 			}
 		}
 		break;
@@ -70,10 +69,6 @@ int main()
 			else
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-				if (p1.KoniecGry() == true)
-				{
-					exit(0);
-				}
 			}
 		}
 		break;
@@ -82,6 +77,7 @@ int main()
 			p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 			rotacja = p1.RotujKlocka1(rotacja);
 			y1 = p1.RotujKlocka2(x1, y1, r_klocka, rotacja);
+			x1 = p1.RotujKlocka3(x1, y1, r_klocka, rotacja);
 		}
 		break;
 		default:
@@ -89,7 +85,6 @@ int main()
 			exit(0);
 		}
 		}
-		
 		system("cls");
 		p1.Generator_Planszy();
 	}
