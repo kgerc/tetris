@@ -17,13 +17,14 @@ public:
 	//ponizsze dwie funkcje polaczone ze soba
 	void Kasacja_linii(int pozycjaY);
 	void Czy_usuwac_linie();
-	bool czy_blok_jest_wolny(int pX, int pY);
 	bool czy_ruch_jest_mozliwy(int pX,int pY, int klocek, int rotacja);
 	int plansza[WYSOKOSC_PLANSZY][SZEROKOSC_PLANSZY];
 	void Generator_Planszy();
 	int GetRand();
 	int RotujKlocka1(int rotacja);
 	int RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja);
+	int Pozycja_poczatkowa_x(int rodzaj_klocka,int rotacja);
+	int Pozycja_poczatkowa_y(int rodzaj_klocka, int rotacja);
 	int wys;
 };
 

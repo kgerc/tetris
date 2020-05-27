@@ -212,3 +212,11 @@ int Plansza::RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja)
 	}
 	return pY;
 }
+int::Plansza::Pozycja_poczatkowa_x(int rodzaj_klocka, int rotacja)
+{
+	return PozycjaXInit(rodzaj_klocka,rotacja);
+}
+int::Plansza::Pozycja_poczatkowa_y(int rodzaj_klocka, int rotacja)
+{
+	return PozycjaYInit(rodzaj_klocka, rotacja);
+}

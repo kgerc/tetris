@@ -6,11 +6,11 @@ using namespace std;
 int main()
 {
 	int x;
-	int x1=0, y1=1,r_klocka=1,rotacja=1;
+	int x1=-1, y1=3,r_klocka=6,rotacja=3;
 	Plansza p1(20);
 	p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 	p1.Generator_Planszy();
-	for (int i = 0; i < 300; i++)
+	for(;;)
 	{
 		cout << endl<< "kierunek:";
 		cin >> x;
@@ -28,9 +28,13 @@ int main()
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 				p1.Czy_usuwac_linie();
-				x1 = 1;
-				y1 = 1;
+				if (p1.KoniecGry() == true)
+				{
+					exit(0);
+				}
 				r_klocka = p1.GetRand();
+				x1 = p1.Pozycja_poczatkowa_x(r_klocka, rotacja);
+				y1 = p1.Pozycja_poczatkowa_y(r_klocka, rotacja);
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 			}
 
@@ -47,6 +51,10 @@ int main()
 			else
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+				if (p1.KoniecGry() == true)
+				{
+					exit(0);
+				}
 			}
 		}
 		break;
@@ -62,6 +70,10 @@ int main()
 			else
 			{
 				p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+				if (p1.KoniecGry() == true)
+				{
+					exit(0);
+				}
 			}
 		}
 		break;
