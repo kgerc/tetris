@@ -1,0 +1,12 @@
+﻿  game.cpp
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,51): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,51): warning C4244:         with
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,51): warning C4244:         [
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,51): warning C4244:             T=float
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,51): warning C4244:         ]
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,37): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,37): warning C4244:         with
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,37): warning C4244:         [
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,37): warning C4244:             T=float
+C:\Users\kacpe\Desktop\tetris\tetris\game.cpp(13,37): warning C4244:         ]
+  tetris.vcxproj -> C:\Users\kacpe\Desktop\tetris\Debug\tetris.exe
