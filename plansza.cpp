@@ -190,27 +190,63 @@ int Plansza::RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja)
 		}
 	}
 	else
-	if (pY < 0)
+	if (pY < 0 && rodzaj_klocka != 0)
 		{
 			pY = pY + 1;
 		}
-	if (pY > 7)
+	if (pY > 7 && rodzaj_klocka != 0)
 		{
 			pY = pY - 1;
 		}
-	
+	return pY;
+}
+int Plansza::RotujKlocka3(int pX, int pY, int rodzaj_klocka, int rotacja)
+{
+	if (rodzaj_klocka == 1)
+	{
+		if (pX == -2 && rotacja == 1)
+		{
+			pX = pX + 1;
+		}
+		if (pX == -2 && rotacja == 3)
+		{
+			pX = pX + 2;
+		}
+		if (rotacja == 3 && (pX == -1 || pX == -2))
+		{
+			pX = pX + 1;
+		}
+		if (pX == 16 && rotacja == 1)
+		{
+			pX = pX - 2;
+		}
+		if (rotacja == 3 && (pX == 16 || pX == 15))
+		{
+			pX = pX - 1;
+		}
+	}
+	else if (pX == -2&&rodzaj_klocka!=0)
+	{
+		pX = pX + 1;
+	}
+	else if(pX==16 && rodzaj_klocka != 0)
+	{
+		pX = pX - 1;
+	}
+	return pX;
+}
+void::Plansza::RotujKlocka4(int pX, int pY, int rodzaj_klocka, int rotacja)
+{
 	for (int i1 = pX, i2 = 0; i1 < pX + MACIERZ_KLOCKA; i1++, i2++)
 	{
 		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)
 		{
-
 			if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0)
 			{
 				plansza[i1][j1] = 1;
 			}
 		}
 	}
-	return pY;
 }
 int::Plansza::Pozycja_poczatkowa_x(int rodzaj_klocka, int rotacja)
 {

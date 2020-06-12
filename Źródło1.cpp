@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 	//Inicjalizacja planszy i pierwszego klocka
-	int x1=-2, y1=3,r_klocka=1,rotacja=0,x;
+	int x1 = -2, y1 = 3, r_klocka = 6, rotacja = 1;
 	Plansza p1(20);
 	p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 	p1.Generator_Planszy();
@@ -18,10 +18,11 @@ int main()
 		//2-prawo
 		//3-lewo
 		//4-rotacja
-			cin >> x;
+		char x;
+		x = _getch();
 				switch (x)
 				{
-				case 1:
+				case 's':
 				{
 					p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 					if (p1.czy_ruch_jest_mozliwy(x1 + 1, y1, r_klocka, rotacja))
@@ -46,7 +47,7 @@ int main()
 
 				}
 				break;
-				case 2:
+				case 'd':
 				{
 					p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 					if (p1.czy_ruch_jest_mozliwy(x1, y1 + 1, r_klocka, rotacja))
@@ -61,7 +62,7 @@ int main()
 				}
 				break;
 
-				case 3:
+				case 'a':
 				{
 					p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 					if (p1.czy_ruch_jest_mozliwy(x1, y1 - 1, r_klocka, rotacja))
@@ -75,12 +76,13 @@ int main()
 					}
 				}
 				break;
-				case 4:
+				case 'w':
 				{
 					p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 					rotacja = p1.RotujKlocka1(rotacja);
 					y1 = p1.RotujKlocka2(x1, y1, r_klocka, rotacja);
 					x1 = p1.RotujKlocka3(x1, y1, r_klocka, rotacja);
+					p1.RotujKlocka4(x1, y1, r_klocka, rotacja);
 				}
 				break;
 				default:
