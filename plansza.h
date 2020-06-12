@@ -24,6 +24,7 @@ public:
 	//ponizsze 6 funkcji w parach
 	void Kasacja_linii(int pozycjaY);
 	void Czy_usuwac_linie();
+	bool czy_mozna_rotowac(int pX, int pY, int rodzaj_klocka, int rotacja);
 	//wersja 1 odpowiada jedynie za zmiane wartosci zmiennej "rotacja"
 	int RotujKlocka1(int rotacja);
 	//wersja 2 odpowiada za rotowanie klocka z uwzglednieniem bocznych kolizji przy generowaniu zrotowanego klocka

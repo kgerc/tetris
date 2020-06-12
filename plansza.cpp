@@ -164,37 +164,36 @@ int Plansza::RotujKlocka2(int pX, int pY, int rodzaj_klocka, int rotacja)
 {
 	if (rodzaj_klocka == 1)
 	{
-		if (pY == -1 && rotacja == 2)
+		if ((pY == -1||plansza[pX+2][pY+1]==1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 2)
 		{
 			pY = pY + 2;
 		}
-		if (pY == 0 && rotacja == 2)
+		if ((pY == 0 || plansza[pX + 2][pY + 2] == 1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 2)
 		{
 			pY = pY + 1;
 		}
-		if (pY == -1 && rotacja == 0)
+		if ((pY == -1 || plansza[pX + 2][pY + 1]==1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 0)
 		{
 			pY = pY + 1;
 		}
-		if (pY == 8 && rotacja == 0)
+		if ((pY == 8 || plansza[pX + 2][pY +3] == 1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 0)
 		{
 			pY = pY - 2;
 		}
-		if (pY == 7 && rotacja == 0)
+		if ((pY == 7 || plansza[pX + 2][pY + 4] == 1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 0)
 		{
 			pY = pY - 1;
 		}
-		if (pY == 8 && rotacja == 2)
+		if ((pY == 8 || plansza[pX + 2][pY +3] == 1 || plansza[pX + 1][pY + 2] == 1) && rotacja == 2)
 		{
 			pY = pY - 1;
 		}
 	}
-	else
-	if (pY < 0 && rodzaj_klocka != 0)
+	else if ((pY < 0 || plansza[pX + 2][pY + 1] == 1 || plansza[pX + 3][pY + 1] == 1)&& rodzaj_klocka != 0)
 		{
 			pY = pY + 1;
 		}
-	if (pY > 7 && rodzaj_klocka != 0)
+	else if ((pY > 7 || plansza[pX + 1][pY + 3] == 1 || plansza[pX + 2][pY + 3] == 1) && rodzaj_klocka != 0)
 		{
 			pY = pY - 1;
 		}
@@ -204,32 +203,36 @@ int Plansza::RotujKlocka3(int pX, int pY, int rodzaj_klocka, int rotacja)
 {
 	if (rodzaj_klocka == 1)
 	{
-		if (pX == -2 && rotacja == 1)
+		if ((pX == -2||plansza[pX+1][pY+2]==1) && rotacja == 1)
 		{
 			pX = pX + 1;
 		}
-		if (pX == -2 && rotacja == 3)
+		if ((pX == -2 || plansza[pX + 1][pY + 2] == 1) && rotacja == 3)
 		{
 			pX = pX + 2;
 		}
-		if (rotacja == 3 && (pX == -1 || pX == -2))
+		if ((rotacja == 3 || plansza[pX + 1][pY + 2] == 1) && (pX == -1 || pX == -2))
 		{
 			pX = pX + 1;
 		}
-		if (pX == 16 && rotacja == 1)
+		if ((pX == 16 || plansza[pX + 3][pY] == 1) && rotacja == 1)
 		{
 			pX = pX - 2;
 		}
-		if (rotacja == 3 && (pX == 16 || pX == 15))
+		if ((pX == 15  || plansza[pX + 4][pY] == 1) && rotacja == 1)
+		{
+			pX = pX -1;
+		}
+		if ((rotacja == 3 || plansza[pX + 3][pY] == 1) && pX == 16)
 		{
 			pX = pX - 1;
 		}
 	}
-	else if (pX == -2&&rodzaj_klocka!=0)
+	else if ((pX == -2 || plansza[pX + 1][pY + 1] == 1 || plansza[pX + 1][pY + 2] == 1) && rodzaj_klocka!=0)
 	{
 		pX = pX + 1;
 	}
-	else if(pX==16 && rodzaj_klocka != 0)
+	else if((pX==16 || plansza[pX + 3][pY + 2] == 1 || plansza[pX + 3][pY + 3] == 1) && rodzaj_klocka != 0)
 	{
 		pX = pX - 1;
 	}
@@ -247,6 +250,26 @@ void::Plansza::RotujKlocka4(int pX, int pY, int rodzaj_klocka, int rotacja)
 			}
 		}
 	}
+}
+bool::Plansza::czy_mozna_rotowac(int pX, int pY, int rodzaj_klocka, int rotacja)
+{
+	int licznik=0;
+	for (int i1 = pX, i2 = 0; i1 < pX + MACIERZ_KLOCKA; i1++, i2++)
+	{
+		for (int j1 = pY, j2 = 0; j1 < pY + MACIERZ_KLOCKA; j1++, j2++)
+		{
+			if (TypKlocka(rodzaj_klocka, rotacja, i2, j2) != 0&&plansza[i1][j1]==1)
+			{
+				licznik++;
+			}
+		}
+	}
+	if (licznik != 0)
+	{
+		return false;
+	}
+	else
+		return true;
 }
 int::Plansza::Pozycja_poczatkowa_x(int rodzaj_klocka, int rotacja)
 {
