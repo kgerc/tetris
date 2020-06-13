@@ -77,10 +77,12 @@ int main()
 				break;
 				case 'w':
 				{
+						//zmienne na wypadek jak nie mozna rotowac
 						int x2 = x1;
 						int y2 = y1;
 						int r_klocka2 = r_klocka;
 						int rotacja2 = rotacja;
+						//
 						p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
 						rotacja = p1.RotujKlocka1(rotacja);
 						y1 = p1.RotujKlocka2(x1, y1, r_klocka, rotacja);
@@ -92,6 +94,12 @@ int main()
 						else
 						{
 							p1.Generator_Klockow(x2, y2, r_klocka2, rotacja2);
+							//przypisanie zmiennym glownym wartosci zmiennych pomocniczych dla dalszych ruchów
+							x1 = x1;
+							y1 = y2;
+							r_klocka = r_klocka2;
+							rotacja = rotacja2;
+							//
 						}
 				}
 				break;
