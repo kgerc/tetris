@@ -40,6 +40,8 @@ public:
 	int GetRand();
 	bool KoniecGry();
 	void Generujklocka(sf::RenderWindow& window, sf::VertexArray& M);
+	bool czy_mozna_rotowac(int pX, int pY, int rodzaj_klocka, int rotacja);
+	void RotujKlocka4(int pX, int pY, int rodzaj_klocka, int rotacja);
 };
 
 void scorr(sf::RenderWindow& window);

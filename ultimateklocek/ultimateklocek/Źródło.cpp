@@ -28,7 +28,6 @@ int main()
 
 	creation(haha, oof, p, o, s, tetris, p0, p2, p3, hahatexture, ooftexture, stexture, tetristexture, p0texture, p2texture, p3texture, enterr, enterrtexture);
 
-
 	sf::VertexArray M(sf::PrimitiveType::Points, 240);
 
 	unsigned int i = 0;
@@ -48,163 +47,235 @@ int main()
 	p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
 	p1.Generator_Planszy();
 
-
+	sf::Clock clock;
+	sf::Time time;
+	float czas;
+	sf::Event event;
 
 	bool gameison = 0;
 	bool lego = 0;
+	window.setKeyRepeatEnabled(false);
 
 	while (window.isOpen())
 	{
-		window.setKeyRepeatEnabled(false);
-		sf::Event event;
+		window.setActive(true);
 
-		while (window.pollEvent(event))
+		if(lego == 1)
 		{
+			window.clear(sf::Color(255, 199, 227));
+			window.draw(o);
+			window.draw(p);
+			window.draw(s);
+			scorr(window);
+			time = clock.getElapsedTime();
+			czas = time.asSeconds();
+			//std::cout << czas;
 
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			if (gameison == 0)
+			if (czas > 1.0f)
 			{
-
-				gameizon(window, haha, oof, tetris, p0, p2, p3);
-				
-
-				if (event.type == sf::Event::MouseButtonPressed)
+				p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
+				if (p1.czy_ruch_jest_mozliwy(x1 + 1, y1, r_klocka, rotacja))
 				{
-					if (event.mouseButton.button == sf::Mouse::Left)
-					{
-						sf::Vector2i mousepos = sf::Mouse::getPosition(window);
-						sf::Vector2f p0pos = p0.getPosition();
-
-
-						if (p0pos.x == 600 && p0pos.y == 600)
-						{
-							if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 563 && mousepos.y <= 637)
-							{
-								gameison = 1;
-							}
-
-
-							if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 663 && mousepos.y <= 737)
-							{
-								howtoplay(haha, oof, tetris, p0, p2, p3);
-
-							}
-							if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 763 && mousepos.y <= 837)
-							{
-								window.close();
-							}
-						}
-						if (p0pos.x == 3000 && p0pos.y == 3000)
-						{
-							if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 713 && mousepos.y <= 787)
-							{
-								back(haha, oof, tetris, p0, p2, p3);
-							}
-						}
-					}
-				}
-			}
-
-			else
-			{
-				if (lego == 0)
-				{
-
-					window.clear(sf::Color(255, 199, 227));
-					window.draw(o);
-					window.draw(p);
-					window.draw(s);
-					window.draw(enterr);
-
-					window.display();
-
-					if (event.type == sf::Event::KeyPressed)
-					{
-						if (event.key.code == sf::Keyboard::Enter)
-						{
-							lego = 1;
-						}
-
-					}
+					p1.Generator_Klockow(x1 + 1, y1, r_klocka, rotacja);
+					x1++;
 				}
 				else
 				{
-					window.clear(sf::Color(255, 199, 227));
-					window.draw(o);
-					window.draw(p);
-					window.draw(s);
-					scorr(window);
-
-					if (event.type == sf::Event::KeyPressed)
+					p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+					p1.Czy_usuwac_linie();
+					if (p1.KoniecGry() == true)
 					{
-						if (event.key.code == sf::Keyboard::Down)
-						{
-							p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
-							if (p1.czy_ruch_jest_mozliwy(x1 + 1, y1, r_klocka, rotacja))
-							{
-								p1.Generator_Klockow(x1 + 1, y1, r_klocka, rotacja);
-								x1++;
-							}
-							else
-							{
-								p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-								p1.Czy_usuwac_linie();
-								if (p1.KoniecGry() == true)
-								{
-									std::cout << "GAME OVER";
-									exit(0);
-								}
-								r_klocka = p1.GetRand();
-								x1 = p1.Pozycja_poczatkowa_x(r_klocka, rotacja);
-								y1 = p1.Pozycja_poczatkowa_y(r_klocka, rotacja);
-								p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-							}
+						std::cout << "GAME OVER";
+						exit(0);
+					}
+					r_klocka = p1.GetRand();
+					x1 = p1.Pozycja_poczatkowa_x(r_klocka, rotacja);
+					y1 = p1.Pozycja_poczatkowa_y(r_klocka, rotacja);
+					p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+				}
+				clock.restart();
+			}
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
 
-						}
-						if (event.key.code == sf::Keyboard::Right)
+				if (event.type == sf::Event::KeyPressed)
+				{
+					if (event.key.code == sf::Keyboard::Down)
+					{
+						window.setKeyRepeatEnabled(true);
+
+						p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
+						if (p1.czy_ruch_jest_mozliwy(x1 + 1, y1, r_klocka, rotacja))
 						{
+							p1.Generator_Klockow(x1 + 1, y1, r_klocka, rotacja);
+							x1++;
+						}
+						else
+						{
+							p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+							p1.Czy_usuwac_linie();
+							if (p1.KoniecGry() == true)
+							{
+								std::cout << "GAME OVER";
+								exit(0);
+							}
+							r_klocka = p1.GetRand();
+							x1 = p1.Pozycja_poczatkowa_x(r_klocka, rotacja);
+							y1 = p1.Pozycja_poczatkowa_y(r_klocka, rotacja);
+							p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+						}
+
+					}
+					if (event.key.code == sf::Keyboard::Right)
+					{
+						p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
+						if (p1.czy_ruch_jest_mozliwy(x1, y1 + 1, r_klocka, rotacja))
+						{
+							p1.Generator_Klockow(x1, y1 + 1, r_klocka, rotacja);
+							y1++;
+						}
+						else
+						{
+							p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+						}
+					}
+					if (event.key.code == sf::Keyboard::Left)
+					{
+						p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
+						if (p1.czy_ruch_jest_mozliwy(x1, y1 - 1, r_klocka, rotacja))
+						{
+							p1.Generator_Klockow(x1, y1 - 1, r_klocka, rotacja);
+							y1--;
+						}
+						else
+						{
+							p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
+						}
+					}
+					if (event.key.code == sf::Keyboard::Up)
+					{
+						
+							//zmienne na wypadek jak nie mozna rotowac
+							int x2 = x1;
+							int y2 = y1;
+							int r_klocka2 = r_klocka;
+							int rotacja2 = rotacja;
+							//
 							p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
-							if (p1.czy_ruch_jest_mozliwy(x1, y1 + 1, r_klocka, rotacja))
-							{
-								p1.Generator_Klockow(x1, y1 + 1, r_klocka, rotacja);
-								y1++;
-							}
-							else
-							{
-								p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-							}
-						}
-						if (event.key.code == sf::Keyboard::Left)
-						{
-							p1.Czyszczenie_klockow(x1, y1, r_klocka, rotacja);
-							if (p1.czy_ruch_jest_mozliwy(x1, y1 - 1, r_klocka, rotacja))
-							{
-								p1.Generator_Klockow(x1, y1 - 1, r_klocka, rotacja);
-								y1--;
-							}
-							else
-							{
-								p1.Generator_Klockow(x1, y1, r_klocka, rotacja);
-							}
-						}
-						if (event.key.code == sf::Keyboard::Up)
-						{
-							p1.Czyszczenie_klockow(x1,
-								y1, r_klocka, rotacja);
 							rotacja = p1.RotujKlocka1(rotacja);
 							y1 = p1.RotujKlocka2(x1, y1, r_klocka, rotacja);
 							x1 = p1.RotujKlocka3(x1, y1, r_klocka, rotacja);
+							if (p1.czy_mozna_rotowac(x1, y1, r_klocka, rotacja))
+							{
+								p1.RotujKlocka4(x1, y1, r_klocka, rotacja);
+							}
+							else
+							{
+								p1.Generator_Klockow(x2, y2, r_klocka2, rotacja2);
+								//przypisanie zmiennym glownym wartosci zmiennych pomocniczych dla dalszych ruchów
+								x1 = x2;
+								y1 = y2;
+								r_klocka = r_klocka2;
+								rotacja = rotacja2;
+								//
+							}
+						
+					}
+				}
+				if (event.type == sf::Event::KeyReleased)
+				{
+					if (event.key.code == sf::Keyboard::Down)
+					{
+						window.setKeyRepeatEnabled(false);
+					}
+
+				}
+			}
+			system("cls");
+
+			p1.Generator_Planszy();
+			p1.Generujklocka(window, M);
+
+
+			window.display();
+
+		}
+		else
+		{
+			while (window.pollEvent(event))
+			{
+
+				if (event.type == sf::Event::Closed)
+					window.close();
+
+				if (gameison == 0)
+				{
+
+					gameizon(window, haha, oof, tetris, p0, p2, p3);
+
+
+					if (event.type == sf::Event::MouseButtonPressed)
+					{
+						if (event.mouseButton.button == sf::Mouse::Left)
+						{
+							sf::Vector2i mousepos = sf::Mouse::getPosition(window);
+							sf::Vector2f p0pos = p0.getPosition();
+
+
+							if (p0pos.x == 600 && p0pos.y == 600)
+							{
+								if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 563 && mousepos.y <= 637)
+								{
+									gameison = 1;
+								}
+
+
+								if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 663 && mousepos.y <= 737)
+								{
+									howtoplay(haha, oof, tetris, p0, p2, p3);
+
+								}
+								if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 763 && mousepos.y <= 837)
+								{
+									window.close();
+								}
+							}
+							if (p0pos.x == 3000 && p0pos.y == 3000)
+							{
+								if (mousepos.x >= 513 && mousepos.x <= 687 && mousepos.y >= 713 && mousepos.y <= 787)
+								{
+									back(haha, oof, tetris, p0, p2, p3);
+								}
+							}
 						}
 					}
-					system("cls");
+				}
 
-					p1.Generator_Planszy();
-					p1.Generujklocka(window, M);
+				else
+				{
+					if (lego == 0)
+					{
 
+						window.clear(sf::Color(255, 199, 227));
+						window.draw(o);
+						window.draw(p);
+						window.draw(s);
+						window.draw(enterr);
 
-					window.display();
+						window.display();
+
+						if (event.type == sf::Event::KeyPressed)
+						{
+							if (event.key.code == sf::Keyboard::Enter)
+							{
+								lego = 1;
+								clock.restart();
+							}
+
+						}
+					}
 
 				}
 			}
