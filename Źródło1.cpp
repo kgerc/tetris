@@ -95,7 +95,7 @@ int main()
 						{
 							p1.Generator_Klockow(x2, y2, r_klocka2, rotacja2);
 							//przypisanie zmiennym glownym wartosci zmiennych pomocniczych dla dalszych ruchów
-							x1 = x1;
+							x1 = x2;
 							y1 = y2;
 							r_klocka = r_klocka2;
 							rotacja = rotacja2;
