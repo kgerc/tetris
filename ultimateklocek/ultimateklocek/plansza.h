@@ -1,11 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "klocek.h"
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <Windows.h>
 #define SZEROKOSC_PLANSZY 12
 #define WYSOKOSC_PLANSZY 20
 #define MACIERZ_KLOCKA 5
@@ -44,4 +39,5 @@ public:
 	void RotujKlocka4(int pX, int pY, int rodzaj_klocka, int rotacja);
 };
 
-void scorr(sf::RenderWindow& window);
+int scorr(sf::RenderWindow& window);
+void gamerover(sf::RenderWindow& window);

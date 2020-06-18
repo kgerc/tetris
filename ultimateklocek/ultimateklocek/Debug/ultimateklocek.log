@@ -1,13 +1,14 @@
 ﻿  Źródło.cpp
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,51): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,51): warning C4244:         with
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,51): warning C4244:         [
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,51): warning C4244:             T=float
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,51): warning C4244:         ]
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,37): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,37): warning C4244:         with
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,37): warning C4244:         [
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,37): warning C4244:             T=float
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(38,37): warning C4244:         ]
-C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(45,50): warning C4101: "x": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,51): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,51): warning C4244:         with
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,51): warning C4244:         [
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,51): warning C4244:             T=float
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,51): warning C4244:         ]
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,37): warning C4244: "argument": konwersja z "unsigned int" do "T", możliwa utrata danych
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,37): warning C4244:         with
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,37): warning C4244:         [
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,37): warning C4244:             T=float
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(37,37): warning C4244:         ]
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(72,17): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\kacpe\Desktop\ultimateklocek\ultimateklocek\Źródło.cpp(44,50): warning C4101: "x": lokalna zmienna, do której nie istnieje odwołanie
   ultimateklocek.vcxproj -> C:\Users\kacpe\Desktop\ultimateklocek\Debug\ultimateklocek.exe

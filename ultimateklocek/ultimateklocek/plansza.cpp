@@ -1,12 +1,8 @@
 #include <SFML\Graphics.hpp>
 #include "plansza.h"
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
 #include <time.h>
-#include <Windows.h>
 #include "klocek.h"
-#include <iostream>
+
 
 using namespace std;
 
@@ -44,29 +40,29 @@ void Plansza::Generator_Planszy()
 		}
 	}
 	//tymczasowe rozwiazanie konsolowe
-	for (int i = 0; i < WYSOKOSC_PLANSZY; i++)
-	{
-		if (i == 19)
-		{
-			for (int j = 0; j < SZEROKOSC_PLANSZY; j++)
-			{
-				cout << plansza[i][j];
-			}
-			break;
-		}
-		for (int j = 0; j < SZEROKOSC_PLANSZY; j++)
-		{
-			if (j == 0 || j == 11 || plansza[i][j] == 1)
-			{
-				cout << plansza[i][j];
-			}
-			else
-			{
-				cout << " ";
-			}
-		}
-		cout << endl;
-	}
+	//for (int i = 0; i < WYSOKOSC_PLANSZY; i++)
+	//{
+	//	if (i == 19)
+	//	{
+	//		for (int j = 0; j < SZEROKOSC_PLANSZY; j++)
+	//		{
+	//			cout << plansza[i][j];
+	//		}
+	//		break;
+	//	}
+	//	for (int j = 0; j < SZEROKOSC_PLANSZY; j++)
+	//	{
+	//		if (j == 0 || j == 11 || plansza[i][j] == 1)
+	//		{
+	//			cout << plansza[i][j];
+	//		}
+	//		else
+	//		{
+	//			cout << " ";
+	//		}
+	//	}
+	//	cout << endl;
+	//}
 }
 void Plansza::Generator_Klockow(int pozycjaX, int pozycjaY, int rodzaj_klocka, int rotacja)
 {
@@ -301,7 +297,7 @@ void::Plansza::Generujklocka(sf::RenderWindow& window, sf::VertexArray& M)
 		{
 			if (plansza[i][j] == 1)
 			{
-				sf::RectangleShape klocek1(sf::Vector2f(50.0f, 50.0f));
+				sf::RectangleShape klocek1(sf::Vector2f(40.0f, 40.0f));
 				sf::Texture cubetexture;
 				cubetexture.loadFromFile("textury/cube.png");
 				klocek1.setTexture(&cubetexture);
@@ -318,7 +314,7 @@ void::Plansza::Generujklocka(sf::RenderWindow& window, sf::VertexArray& M)
 }
 
 
-void scorr(sf::RenderWindow& window)
+int scorr(sf::RenderWindow& window)
 {
 
 	int scr = 0;
@@ -336,8 +332,21 @@ void scorr(sf::RenderWindow& window)
 	sf::Text scre(score, czcionka);
 	scre.setFillColor(sf::Color(217, 141, 255));
 	scre.setCharacterSize(100);
-	scre.setPosition(710, 250);
+	scre.setPosition(510, 250);
 
 
 	window.draw(scre);
+
+	return scr;
+}
+void gamerover(sf::RenderWindow& window)
+{
+	sf::RectangleShape gamerover(sf::Vector2f(350.0f, 250.0f));
+	sf::Texture overtexture;
+	gamerover.setOrigin(175.0f, 125.0f);
+	overtexture.loadFromFile("textury/over.jpg");
+	gamerover.setTexture(&overtexture);
+	gamerover.setPosition(650, 550);
+	window.draw(gamerover);
+	window.display();
 }
