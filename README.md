@@ -7,6 +7,6 @@ Our small project is supposed to imitate a popular 80's game Tetris. We were ins
 There is no installer attached to our project, in order to play the game you just need to enter ultimateklocek->Debug->ultimateklocek.exe 
 
 ## What are the requirements?
-The only requirement is a Windows operation system
+The only requirement is a Windows operating system
 
 ## Hope you enjoy your gameplay experience :))
